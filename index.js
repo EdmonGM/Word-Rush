@@ -15,7 +15,7 @@ var scoreElement = document.getElementById("score");
 
 const words_list = ["hello", "sugar", "banana", "games", "test", "attack"];
 
-const SPEED = window.innerWidth / 1000 - 100;
+const SPEED = window.innerWidth / 1000 - 200;
 
 form[0].addEventListener("submit", (e) => {
   e.preventDefault();
@@ -61,22 +61,21 @@ class Enemy {
     this.word = item;
   }
   move() {
-    let id = null;
+    let moveWord = null;
     let item = this.word;
 
-    clearInterval(id);
-    id = setInterval(frame, SPEED);
-    function frame() {
+    clearInterval(moveWord);
+    moveWord = setInterval(() => {
       let pos = item.getBoundingClientRect().x;
       if (pos >= killzone.getBoundingClientRect().x - 18) {
-        clearInterval(id);
+        clearInterval(moveWord);
         clearInterval(spawnWord);
         gameOverScreen.style.display = "flex";
       } else {
         pos++;
         item.style.left = pos + "px";
       }
-    }
+    }, SPEED);
   }
 }
 function spawnNewWord(time) {
