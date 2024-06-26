@@ -58,9 +58,9 @@ form {
   font-size: 18px;
   text-indent: 6px;
   padding: 6px 0;
+  color: black;
 }
 #game_over {
-  /* display: none; */
   position: absolute;
   display: none;
   flex-direction: column;
